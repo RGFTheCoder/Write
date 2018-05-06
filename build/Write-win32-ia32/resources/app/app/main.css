@@ -15,12 +15,36 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+style.customStyles::before {
+    content: "Styles: ";
+}
+
+style.customStyles {
+    display: block;
+}
+
 div.body {
     background-color: rgba(37, 37, 37, 0.95);
     color: rgb(222, 222, 222);
+    /* border-bottom-left-radius: 1pc;
+    border-bottom-right-radius: 1pc; */
+    padding: 1pc;
+    /* height: 0;
+    visibility: collapse; */
+    transition: 0.3s;
+}
+
+div.body * {
+    transition: 0.3s;
+}
+
+div.settings {
+    background-color: rgba(222, 222, 222, 0.95);
+    color: rgb(37, 37, 37);
     border-bottom-left-radius: 1pc;
     border-bottom-right-radius: 1pc;
     padding: 1pc;
+    /* height: 0; */
 }
 
 div.dragbar {

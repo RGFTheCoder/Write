@@ -2,9 +2,16 @@ const { dialog } = require('electron').remote;
 var fs = require('fs');
 var currFoc = null;
 var currPos = 0;
-
+var sblur = null;
 
 addEventListener('load', function() {
+
+    document.querySelector("style.customStyles").innerText = localStorage.cStyle;
+    document.querySelector("style.sblur").innerText = "div.body * {-webkit-filter: blur(0); }";
+
+    setInterval(function() {
+        localStorage.cStyle = document.querySelector("style.customStyles").innerText;
+    }, 100);
 
     var ipc = require('electron').ipcRenderer;
 
@@ -36,6 +43,11 @@ addEventListener('load', function() {
             currPos = bodins.textContent.length;
         }
     });
+
+    document.querySelector("style.customStyles").onclick = function() {
+        currFoc = { textContent: "" };
+        currPos = 0;
+    }
 
     var newt = false;
     var cmd = false;
@@ -74,7 +86,7 @@ addEventListener('load', function() {
                 currPos = 0;
                 var bodin = document.querySelectorAll("div.body *");
                 bodin.forEach(bodins => {
-                    bodins.setAttribute("data-tag", bodins.tagName)
+                    bodins.setAttribute("data-tag", bodins.tagName.toLowerCase())
                     bodins.onclick = function() {
                         currFoc = bodins;
                         currPos = bodins.textContent.length;
@@ -169,6 +181,16 @@ function saveFile(content) {
     }
 }
 
+// div.body * {-webkit - filter: blur(5px); }
+
+window.onblur = function() {
+    document.querySelector("style.sblur").innerText = "div.body * {-webkit-filter: blur(5px); }";
+}
+
+window.onfocus = function() {
+    document.querySelector("style.sblur").innerText = "div.body * {-webkit-filter: blur(0); }";
+}
+
 function openFile() {
     var t = "";
     dialog.showOpenDialog((fileNames) => {
@@ -185,7 +207,7 @@ function openFile() {
 
         var bodin = document.querySelectorAll("div.body *");
         bodin.forEach(bodins => {
-            bodins.setAttribute("data-tag", bodins.tagName)
+            bodins.setAttribute("data-tag", bodins.tagName.toLowerCase())
             bodins.onclick = function() {
                 currFoc = bodins;
                 currPos = bodins.textContent.length;

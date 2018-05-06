@@ -1,0 +1,9 @@
+version: 0.1.0
+files:
+  - url: Write-Setup-0.1.0.exe
+    sha512: avJV0p1BJ4pc6Wod6LlraYZqTWIXzubjkRqokoB/NM5gH2sz8LlpEFgoIEoiy5kHWGVn0CwwASbIXoMbZZSBug==
+    size: 36795811
+path: Write-Setup-0.1.0.exe
+sha512: avJV0p1BJ4pc6Wod6LlraYZqTWIXzubjkRqokoB/NM5gH2sz8LlpEFgoIEoiy5kHWGVn0CwwASbIXoMbZZSBug==
+sha2: 366405a80a080d93f67dd9cad83219a37600716ecb5e4dfe5c419be47a0b83f5
+releaseDate: '2018-05-06T22:10:51.702Z'
